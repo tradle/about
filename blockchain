@@ -14,14 +14,19 @@ To explain the above statements:
 
 Big problem - scalability
 ==================
-Although the blockchain can be used today for storing any database transactions, it does not scale well. A normal bitcoin transaction has several inputs from which bitcoin is transferred and several outputs. It does not have a space for adding any other data, like places, conditions, agreements, anything a normal db transaction can have. So the approach used today, called meta-protocols (e.g. Mastercoin, Counterparty), encode extra data into a bitcoin transaction in a convoluted way. Meta-protocols create 1 out of N multisig transaction and encode data in N-1 outputs. Such transactions are not prunable (as they are considered unspent) and thus they bloat the blockchain. Each blockchain node keeps the replica of all past transactions and the size only continues to grow. The problem is so severe that [some pools started to censor meta-protocols](https://github.com/mastercoin-MSC/spec/issues/248). 
+Although the blockchain can be used today for storing any database transactions, it does not scale well. A normal bitcoin transaction has several inputs from which the bitcoins are transferred and several outputs. It does not have a space for any other data, a normal db transaction would need. So the approach used today, called meta-protocols (e.g. Mastercoin, Counterparty), encodes extra data into a bitcoin transaction in different hacky ways. One of the most popular hacks is to create 1 of N multisig transaction and encode data in the N-1 outputs. Such transactions are not prunable (as they are considered unspent) and thus they bloat the blockchain even more. Every blockchain node keeps the replica of all past transactions and the size only continues to grow. The problem is so severe that [some pools started to censor meta-protocols](https://github.com/mastercoin-MSC/spec/issues/248). 
 
 Solutions
 =======
+1. alternative blockchain. Ethereum, [Pebble.io](http://pebble.io)
+2. external storage. Tradle, Factom
+3. sidechains. Blockstream
 
-Ethereum team is exploring several possible solutions.
-Tradle, shameful plug, is using a different approach.
+Ethereum partially solves the problem by making such transactions prunable and with a solid SPV client design (SPV allows provide decent level of verification with a limited amount of data kept on the node). Ethereum is exploring other, [more esoteric](https://www.youtube.com/watch?v=fwEsXBDFk6c) solutions. Note my comments on this youtube video. Those who want to learn more, I would refer to Vitalik's posts on scalability, [part 1](https://blog.ethereum.org/2014/09/17/scalability-part-1-building-top/), [part 2](https://blog.ethereum.org/2014/10/21/scalability-part-2-hypercubes/) and [part 3](https://blog.ethereum.org/2014/11/13/scalability-part-3-metacoin-history-multichain/).
 
-Blockchain also can not hold a lot of data and can not do a lot of computations. It replicates the same data across all participating nodes and each of these nodes performs the same scripts present on every transaction. This allows to achieve global consensus and makes transactional storage very reliable, but is not scalable to if the whole world starts using bitcoin, and especially if all apps in the world start using blockchain as as a log for all their database transactions.
+Bitcoin blockchain is evolving, if slowly. Next release 0.10  will have several scalability improvements (https://www.cryptocoinsnews.com/headers-first-synchronization-coming-soon-bitcoin-core/)
 
+Tradle offers a hybrid solution = blockchain + DHT. Blockchain also can not hold a lot of data and can not do a lot of computations. The idea is to store transaction data outside the blockchain on a DHT, and keep a pointer (hash) to the data on a blockchain. The key improvement is that the transaction data is replicated only to a subset of nodes, let's say 10-50 replicas instead of thousands of blockchain nodes. The only part that is replicated to all nodes is a small transaction with a 40 byte pointer. 
+
+Tradle uses the [kosher OP_RETURN method](https://blog.bitcoinfoundation.org/core-development-update-5/), which while not ideal, adds very little bloat to the blockchain and makes such transaction provably spent, so it does not bloat the most precious blockchain resource, called the UTXO (unspent transaction outputs).
 
