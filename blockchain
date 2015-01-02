@@ -1,0 +1,27 @@
+Blockchain
+==========
+
+1. Bitcoin's blockchain is the first ever [organizationally decentralized and logically centralized](http://continuations.com/post/105272022635/bitcoin-clarifying-the-foundational-innovation-of) transaction log
+2. It is a log, not a database, yet it can be used as a master in a master-slave design pattern, where the slave is a normal SQL or NoSQL database. 
+
+To explain the above statements:
+
+- In the past organizational centralization, e.g. a bank, was required and with it an absolute trust that the transactions will be preserved unchanged, and will be properly sequenced and timestamped. Blockchain's organizational decentralization greatly reduces the trust needed and achieves it on a global scale. 
+
+- In the past decentralized systems were hard to make compatible. But blockchain is logically centralized, which makes it a great way to achieve sharing and compatibility between applications. 
+
+- It is much less than a database, as it does not allow efficient searching and filtering. It also does not allow data to be modified. Yet we can import  transactions from the chain into a normal database. A blockchain explorer, like blockchain.info and a commercial API, like chain.com is in fact a slave database to the blockchain.
+
+Big problem - scalability
+==================
+Although the blockchain can be used today for storing any database transactions, it does not scale well. A normal bitcoin transaction has several inputs from which bitcoin is transferred and several outputs. It does not have a space for adding any other data, like places, conditions, agreements, anything a normal db transaction can have. So the approach used today, called meta-protocols (e.g. Mastercoin, Counterparty), encode extra data into a bitcoin transaction in a convoluted way. Meta-protocols create 1 out of N multisig transaction and encode data in N-1 outputs. Such transactions are not prunable (as they are considered unspent) and thus they bloat the blockchain. Each blockchain node keeps the replica of all past transactions and the size only continues to grow. The problem is so severe that [some pools started to censor meta-protocols](https://github.com/mastercoin-MSC/spec/issues/248). 
+
+Solutions
+=======
+
+Ethereum team is exploring several possible solutions.
+Tradle, shameful plug, is using a different approach.
+
+Blockchain also can not hold a lot of data and can not do a lot of computations. It replicates the same data across all participating nodes and each of these nodes performs the same scripts present on every transaction. This allows to achieve global consensus and makes transactional storage very reliable, but is not scalable to if the whole world starts using bitcoin, and especially if all apps in the world start using blockchain as as a log for all their database transactions.
+
+
