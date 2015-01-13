@@ -1,7 +1,6 @@
 Imagine
 =======
-
-Imagine a future where abundance, not scarcity is a norm. In this world we tradle the energy we pour into work, for coins we use to pay for living expenses and our whims.
+Imagine a future where abundance, not scarcity is a norm. In this world we tradle the energy we pour into our work, for coins to pay for living and our whims.
 
 Who
 ===
@@ -23,3 +22,8 @@ We discussed the subject of "DHT + blockchain" with bitcoin core devs Matt, Jorg
 
 So our goal is to have blockchain help us secure the DHT, without any adverse effects on the blockchain and with the minimum bloat (using 40 bytes in OP_RETURN).
 
+Migration
+=========
+We are in the process of migrating github repositories and wiki [from another github location](github.com/urbien/tradle/wiki/A-starting-point).
+
+Our [new wiki](https://github.com/tradle/about/wiki) is still under construction, but give it a shot.
