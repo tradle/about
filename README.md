@@ -1,7 +1,7 @@
 Imagine
 =======
 Imagine a future where abundance, not scarcity is a norm. In this world we tradle the energy we pour into our work, for coins to pay for living and our whims.
-Impatient? [see docs](https://github.com/tradle/about/wiki).
+Impatient? [See docs](https://github.com/tradle/about/wiki).
 
 Who
 ===
