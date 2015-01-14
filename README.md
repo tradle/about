@@ -1,6 +1,7 @@
 Imagine
 =======
 Imagine a future where abundance, not scarcity is a norm. In this world we tradle the energy we pour into our work, for coins to pay for living and our whims.
+Impatient? [see docs](https://github.com/tradle/about/wiki).
 
 Who
 ===
@@ -21,9 +22,3 @@ We do not want to turn a blockchain into a database, but rather we want it to se
 We discussed the subject of "DHT + blockchain" with bitcoin core devs Matt, Jorge, Pieter and Mike. They all agree this is not simple to achieve and they expressed a concern "do not bring DHT security problems into the blockchain", and "do not bloat the blockchain".
 
 So our goal is to have blockchain help us secure the DHT, without any adverse effects on the blockchain and with the minimum bloat (using 40 bytes in OP_RETURN).
-
-Migration
-=========
-We are in the process of migrating github repositories and wiki [from another github location](github.com/urbien/tradle/wiki/A-starting-point).
-
-Our [new wiki](https://github.com/tradle/about/wiki) is still under construction, but give it a shot.
